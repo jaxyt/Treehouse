@@ -1,0 +1,35 @@
+constructive criticism sandwich example:
+
+    Great job so far on your project. You've added comments before each function in your program - it's easy for me to understand how your code works. You've also formatted your code by indenting nested structures,which is great for readability.
+
+    However, on line 34, it looks like your using the wrong comparison operator. This makes an infinite loop and is crashing the program.
+
+    Overall your code is well written and easy to read. Excellent work!
+
+
+not as good feedback:
+
+    You've got a syntax error on lines 3 and 34 and 45 and 108...
+
+Better feedback:
+
+    I've noticed that you've got a few syntax errors in your code, like the one on line 3. I reccommend running your code through a validator just to make sure you've caught all of those little errors.
+
+"Needs Work" Feedback:
+    - Explain what needs to be fixed
+    - Guide the student toward a solution
+    - Provide resources or examples
+
+    example:
+
+        You've done a great job completing this requirement, but I see a small problem.
+
+        It looks like your code has a few single letter variables. these should be avoided because it can make your code difficult to read and follow.
+
+        It's really helpful for code readability if variable names describe the values they hold. For example, on line 2, you could name your variable studentList instead of a single letter.
+
+        Here's a great article I found on common ways developers name variables.
+
+        Overall, your code is well-organized and easy to read, so very well done!
+
+The Techdegree Slack team is a great place to go if you need extra help. There you can chat with a friendly community of fellow Techdegree students who are working on the same projects and would be happy to help you out!
