@@ -46,5 +46,9 @@ btn.addEventListener('click', async (event) => {
 
   getPeopleInSpace(astrosUrl)
     .then(generateHTML)
+    .catch(e => {
+      peopleList.innerHTML = '<h3>Something went wrong</h3>'
+      console.error(e);
+    })
     .finally(() => event.target.remove());
 });
