@@ -1,0 +1,7 @@
+user events: like event listeners 
+system event: like timeout function or readystatechange on an http request
+
+system events in Node js:
+Data events
+completion events
+error events
