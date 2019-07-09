@@ -11,26 +11,22 @@ class App extends Component {
       {
         name: "Guil",
         score: 0,
-        id: 1,
-        isHigh: false
+        id: 1
       },
       {
         name: "Treasure",
         score: 0,
-        id: 2,
-        isHigh: false
+        id: 2
       },
       {
         name: "Ashley",
         score: 0,
-        id: 3,
-        isHigh: false
+        id: 3
       },
       {
         name: "James",
         score: 0,
-        id: 4,
-        isHigh: false
+        id: 4
       }
     ],
     highScore: 0
@@ -39,23 +35,40 @@ class App extends Component {
   //player id counter
   prevPlayerId = 4;
 
+  handleHighScore = (index, delta) => {
+    console.log('this action triggered me');
+    this.setState(prevState => {
+
+      if (delta > 0) {
+        if (prevState.players[index].score > prevState.highScore) {
+          return ({
+            highScore: prevState.highScore += delta
+          });
+        }
+      } else if (delta < 0) {
+        const highest = prevState.players.reduce((high, player) => {
+          if (player.score > high) {
+            high = player.score;
+            return high;
+          } else {
+            return high
+          }
+        }, prevState.players[index].score);
+        return ({
+          highScore: prevState.highScore = highest
+        });
+      }
+    })
+  }
+
+
   handleScoreChange = (index, delta) => {
     this.setState( prevState => ({
       score: prevState.players[index].score += delta
     }));
+    this.handleHighScore(index, delta)
   }
 
-  handleHighScores = () => {
-    console.log('this action triggered me');
-
-    // this.setState(prevState => ({
-    //   highScore: prevState.highScore = score
-    // }));
-
-    // this.setState( prevState => ({
-    //   isHigh: prevState.players[index].isHigh = bool
-    // }));
-  }
 
   handleAddPlayer = (name) => {
     let newPlayer = {
@@ -71,9 +84,19 @@ class App extends Component {
 
   handleRemovePlayer = (id) => {
     this.setState( prevState => {
-      return {
-        players: prevState.players.filter(p => p.id !== id)
-      };
+      const newSet = prevState.players.filter(p => p.id !== id);
+      const highest = newSet.reduce((high, player) => {
+        if (player.score > high) {
+          high = player.score;
+          return high;
+        } else {
+          return high
+        }
+      }, 0);
+      return ({
+        players: prevState.players.filter(p => p.id !== id),
+        highScore: prevState.highScore = highest
+      });
     });
   }
 
@@ -93,10 +116,10 @@ class App extends Component {
             id={player.id}
             key={player.id.toString()}
             index={index}
-            isHigh={player.isHigh}
             changeScore={this.handleScoreChange} 
             removePlayer={this.handleRemovePlayer}
-            highScores={this.handleHighScores}          
+            handleHigh={this.handleHighScores}
+            highScore={this.state.highScore}          
           />
         )}
 

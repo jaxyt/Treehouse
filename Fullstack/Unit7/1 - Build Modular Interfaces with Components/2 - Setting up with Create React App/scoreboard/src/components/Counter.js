@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Counter = ({ index, score, changeScore, highScores }) => {
+const Counter = ({ index, score, changeScore, handleHigh, highScore }) => {
 
     return (
     <div className="counter">
