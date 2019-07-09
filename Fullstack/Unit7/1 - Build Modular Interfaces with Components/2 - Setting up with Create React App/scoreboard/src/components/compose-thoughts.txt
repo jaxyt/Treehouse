@@ -1,0 +1,2 @@
+if all players score === 0
+    this.setState

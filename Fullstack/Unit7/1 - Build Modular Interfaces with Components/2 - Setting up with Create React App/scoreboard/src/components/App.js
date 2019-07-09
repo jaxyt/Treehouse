@@ -11,24 +11,29 @@ class App extends Component {
       {
         name: "Guil",
         score: 0,
-        id: 1
+        id: 1,
+        isHigh: false
       },
       {
         name: "Treasure",
         score: 0,
-        id: 2
+        id: 2,
+        isHigh: false
       },
       {
         name: "Ashley",
         score: 0,
-        id: 3
+        id: 3,
+        isHigh: false
       },
       {
         name: "James",
         score: 0,
-        id: 4
+        id: 4,
+        isHigh: false
       }
-    ]
+    ],
+    highScore: 0
   };
 
   //player id counter
@@ -40,11 +45,24 @@ class App extends Component {
     }));
   }
 
+  handleHighScores = () => {
+    console.log('this action triggered me');
+
+    // this.setState(prevState => ({
+    //   highScore: prevState.highScore = score
+    // }));
+
+    // this.setState( prevState => ({
+    //   isHigh: prevState.players[index].isHigh = bool
+    // }));
+  }
+
   handleAddPlayer = (name) => {
     let newPlayer = {
       name,
       score: 0,
-      id: this.prevPlayerId += 1
+      id: this.prevPlayerId += 1,
+      isHigh: false
     };
     this.setState( prevState => ({
       players: prevState.players.concat(newPlayer)
@@ -75,8 +93,10 @@ class App extends Component {
             id={player.id}
             key={player.id.toString()}
             index={index}
+            isHigh={player.isHigh}
             changeScore={this.handleScoreChange} 
-            removePlayer={this.handleRemovePlayer}           
+            removePlayer={this.handleRemovePlayer}
+            highScores={this.handleHighScores}          
           />
         )}
 
